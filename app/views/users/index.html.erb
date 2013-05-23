@@ -1,0 +1,23 @@
+<h3>Users -</h3>
+<table class="table">
+  <tr>
+    <th class="align_center">S. No.</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th class="align_center">Status</th>
+    <th class="align_center">Login count</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @users.sort_by{|u| u.first_name}.each_with_index do |user,index|%>
+      <tr>
+        <td class="align_center"><%= index + 1%></td>
+        <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= user.email%></td>
+        <td class="align_center"><%= user_status(user) %></td>
+        <td class="align_center"><%= user.login_count%></td>
+        <td class="align_center"><%= link_to "Delete",user_path(user), :method => :delete, :confirm => "Are you sure?" %></td>
+        <td class="align_center"><%= link_to "View Details",user_path(user) %></td>
+      </tr>
+  <%end%>
+</table>

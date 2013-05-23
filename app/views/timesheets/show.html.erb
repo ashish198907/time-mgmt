@@ -1,0 +1,8 @@
+<h3>Timesheet - </h3>
+<table class="table">
+<tr><td>Project Name</td><td><%= @timesheet.project.name %></td></tr>
+<tr><td>Date</td><td><%= @timesheet.timesheet_date%></td></tr>
+<tr><td>Time</td><td><%= @timesheet.start_time%> - <%= @timesheet.end_time%></td></tr>
+<tr><td>Total Hours</td><td><%= @timesheet.total_hours%></td></tr>
+<tr><td>Description</td><td><%= @timesheet.description%></td></tr>
+</table>

@@ -1,0 +1,9 @@
+<h3>Project Details - </h3>
+
+<table class="table">
+  <tr><td>Name</td><td><b><%= @project.name %></b></td></tr>
+  <tr><td>Department</td><td><b><%= @project.department %></b></td></tr>
+  <tr><td>Start Date</td><td><b><%= @project.start_date.strftime("%d %B %Y")  %></b></td></tr>
+  <tr><td>End Date</td><td><b><%= @project.end_date.strftime("%d %B %Y") %></b></td></tr>
+  <tr><td>Details</td><td><%= text_area_tag :desc, @project.desc, :readonly => true, :class=> "show_project_desc" %></td></tr>
+</table>

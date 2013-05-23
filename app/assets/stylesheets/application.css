@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require bootstrap-datepicker
+ *= require bootstrap-timepicker
+ *= require_tree .
+ */
+.errors
+{
+	border: 1px solid red;
+    background-color: pink;
+	color: red;
+	padding: 5px;
+    /*width: 250px;*/
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.notice
+{
+	border: 1px solid green;
+    background-color: lightGreen;
+    padding: 5px;
+	color: green;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.align_center
+{
+    text-align: center !important;
+}
+
+.flt-lt
+{
+    float: left;
+}
+
+.flt-rt
+{
+    float: right;
+}
+
+.width_500px
+{
+    width: 500px;
+}
+
+.width_550px
+{
+    width: 550px;
+}
+
+.padding_10px {
+    padding: 10px;
+}
+
+.clearfix {
+    clear: both;    
+}

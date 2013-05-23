@@ -1,0 +1,36 @@
+<div class="left_panel">
+  <div class="well">
+    <h3>What is TMS?</h3>
+    TMS is a time management, timesheet, time tracking solution.
+    It enables you to track your work time, projects you work on and tasks you perform.
+    It is web based and can be used from any location at any time.
+  </div>
+  <div class="well">
+    <h3>Why use web service like TMS?</h3>
+    <b>TMS is web-based.</b> All you need is Internet access and a web browser.
+    There is no need for any hardware or software installation. No maintenance and upgrading needed at your side.
+    <br />
+    <b>Instant start of using TMS.</b>
+    Subscribe on-line and start using the service at the same moment.
+    TMS works on the Internet and can be used from any location at any time.
+  </div>
+</div>
+<div class="right_panel">
+  <% if @user_session.errors.present? %>
+      <div class = "errors">
+          <% @user_session.errors.full_messages.each do |msg| %>
+              <%= msg %>
+          <% end %>
+      </div>
+  <%end%>
+  <div class="login_form well">
+    <%= form_for @user_session, :url => user_sessions_path do |f|  %>
+        <%= f.label :Login %>
+        <%= f.text_field :login, :placeholder => "Login" %><br/>
+        <%= f.label :Password %>
+        <%= f.password_field :password, :placeholder => "Password" %><br/>
+        <%= f.submit 'Sign In' %>
+    <% end %>
+  </div>
+</div>
+

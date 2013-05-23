@@ -1,0 +1,22 @@
+<div class="width_550px flt-lt">
+    <h1>TMS - Home</h1>
+    <%= image_tag "time-management-system.jpg",:width => "40%"%>
+</div>
+<div class="span3 flt-rt">
+  <% if current_user %>
+      <div class="well sidebar-nav">
+        <h3>Overview</h3>
+        <ul class="nav">
+          <% if current_user.is_super_user? %>
+              Total Users = <%= User.all.count %>
+              <br />
+              Active Users = <%= find_active_users %>
+          <% else %>
+              Total Timesheets = <%= link_to current_user.timesheets.count, timesheets_path%>
+              <br />
+              Last timesheet date = <%= current_user.timesheets.all(:order => 'timesheet_date DESC').first.timesheet_date.strftime("%d %h %Y") rescue "NA" %>
+          <% end %>
+        </ul>
+      </div><!--/.well -->
+  <% end %>
+</div><!--/span-->

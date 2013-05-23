@@ -1,0 +1,19 @@
+<h3 class="flt-lt">My Projects - </h3>
+<%= button_to 'Add more projects', new_user_project_path, :class => "flt-rt" %>
+
+<table class="table">
+  <tr>
+    <th>Project Name</th>
+    <th>Your Role</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @my_projects.each do |user_project| %>
+      <tr>
+        <td><%= user_project.project.name %></td>
+        <td><%= user_project.designation %></td>
+        <td><b><%= user_project.verified ? "Verified" : "Verification Pending" %></b></td>
+        <td><%= link_to "View Project Details", project_path(user_project.project) %></td>
+      </tr>
+  <% end %>
+</table>

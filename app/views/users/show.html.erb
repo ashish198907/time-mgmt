@@ -1,0 +1,13 @@
+<h3>User Details - </h3>
+<table class="table">
+  <tr><td>First Name</td><td><b><%= @user.first_name %></b></td></tr>
+  <tr><td>Last Name</td><td><b><%= @user.last_name %></b></td></tr>
+  <tr><td>Login</td><td><b><%= @user.login %></b></td></tr>
+  <tr><td>Email</td><td><b><%= @user.email %></b></td></tr>
+  <tr><td>DOB</td><td><b><%= @user.dob.strftime("%d %B %Y") %></b></td></tr>
+  <tr><td>Login count</td><td><b><%= @user.login_count %></b></td></tr>
+  <tr><td>Current/Last Login ip</td><td><b><%= @user.current_login_ip %></b></td></tr>
+  <tr><td>Login Status</td><td><%= user_status(@user) %></td></tr>
+  <tr><td>Super User</td><td><b><%= @user.is_super_user? %></b></td></tr>
+  <tr><td>Account Created</td><td><b><%= distance_of_time_in_words_to_now(@user.created_at) %> ago</b></td></tr>
+</table>

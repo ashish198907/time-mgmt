@@ -1,0 +1,22 @@
+<h3>Add New Project To Your Profile</h3>
+
+<% if @user_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_project.errors.count, "error") %> prohibited this project from being added to your profile:</h2>
+
+      <ul>
+        <% @user_project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for(@user_project) do |f| %>
+    <div class="flt-lt padding_10px">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.select :project_id,options_for_select(@projects.map{|p| [p.name,p.id]}),:prompt => "Select Project" %>
+      <%= f.select :designation,options_for_select(all_role_options), :prompt => "Select Role" %>
+      <%= f.submit "Add Role", :style => "height: 28px;vertical-align: top;"%>
+    </div>
+<% end %>

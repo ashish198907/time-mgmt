@@ -1,0 +1,34 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flt-lt padding_10px">
+    <%= f.label :name %>
+    <%= f.text_field :name,:placeholder => "Name of Project" %>
+
+    <%= f.label :department %>
+    <%= f.select :department, options_for_select(["ROR","Java",".NET","PHP","ios","QA"],@project.department),:include_blank=> "Please Select" %>
+
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date,:placeholder => "Select start date",:class => 'datepicker',:readonly => true %>
+
+    <%= f.label :end_date %>
+    <%= f.text_field :end_date,:placeholder => "Select end date",:class => 'datepicker',:readonly => true %>
+  </div>
+  <div class="flt-lt padding_10px">
+    <%= f.label :desc, "Description" %>
+    <%= f.text_area :desc,:placeholder => "Enter details here", :class => "new_project_desc"  %>
+    <div class="clearfix"></div>
+    <%= f.submit %>
+    <%= link_to 'Back', projects_path %>
+  </div>
+<% end %>

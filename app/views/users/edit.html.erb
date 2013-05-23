@@ -1,0 +1,32 @@
+<h3>Edit your account</h3>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being updated:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div class="register_form">
+  <%= form_for @user, :url => user_path do |f|  %>
+    <table>
+      <tr>
+        <td><%= f.label :First_name %></td>
+        <td><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Last_name %></td>
+        <td><%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :DOB %></td>
+        <td><%= f.text_field :dob,:class => 'datepicker',:readonly => true%></td>
+      </tr>
+    </table>
+    <%= f.submit "Update Details" %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<h3>Timesheets -</h3>
+<table class="table">
+	<tr>
+		<th>S. No.</th>
+        <th>Project</th>
+		<th>Date</th>
+		<th>Description</th>
+		<th>Start Time</th>
+		<th>End Time</th>
+		<th>Total hours</th>
+		<th></th>
+		<th></th>
+	</tr>
+<% @timesheets.each_with_index do |timesheet,index|%>
+  <tr>
+  	<td><%= index + 1%></td>
+    <td><%= timesheet.project.name %></td>
+  	<td><%= timesheet.timesheet_date.strftime("%d %h %Y")%></td>
+  	<td><%= timesheet.description%></td>
+  	<td><%= timesheet.start_time%></td>
+  	<td><%= timesheet.end_time%></td>
+  	<td><%= timesheet.total_hours%></td>
+  	<td><%= link_to "Delete",timesheet_path(timesheet), :method => :delete %></td>
+  	<td><%= link_to "View",timesheet_path(timesheet) %></td>
+  </tr>
+<%end%>
+</table>

@@ -1,0 +1,34 @@
+<h3 class="flt-lt">Projects - </h3>
+<%= button_to 'Add New Project', new_project_path, :class => "flt-rt" %>
+
+<br />
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= project.department %></td>
+    <td><%= project.start_date %></td>
+    <td><%= project.end_date %></td>
+    <td><%= link_to 'View members', show_project_members_path(:id => project.id) %></td>
+    <td><%= link_to 'Show details', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Delete', project, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

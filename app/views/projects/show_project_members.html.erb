@@ -1,0 +1,19 @@
+<h3><%= @project.name %> - Team Members</h3><br/>
+<% @project_members.each do |member| %>
+    <div class="well" style="width:40%;height: 60px;float: left;margin-right: 5%;">
+      <div class="flt-lt" style="width: 20%;margin-right: 10px;">
+        <%= image_tag "default.jpg" %>
+      </div>
+      <div class="flt-lt">
+        <span style="font-size: 16px;"><b><%= member.user.first_name + " " + member.user.last_name %></b></span><br/>
+        <span style="color: grey;"><b><%= member.designation %></b></span><br/>
+        <b>
+          <span style="color:<%= member.verified ? 'green' : 'red' %>;">
+            <%= member.verified ? "Verified" : "Verification Pending" %>
+          </span>
+        </b><br/>
+        <%= link_to "verify now?", verify_project_membership_path(:id => member.id),:style => "color: blue;" unless member.verified %>
+      </div>
+    </div>
+<% end %>
+

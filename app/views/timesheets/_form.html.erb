@@ -1,0 +1,43 @@
+<% if @timesheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@timesheet.errors.count, "error") %> prohibited this timesheet from being updated:</h2>
+
+      <ul>
+        <% @timesheet.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_for @timesheet, :url => timesheets_path do |f| %>
+    <table>
+      <tr>
+        <td><%= f.label :project_id, "project" %></td>
+        <td><%= f.select :project_id,options_for_select(current_user.approved_projects.map{|p| [p.name,p.id]}),:prompt => "Select Project" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Date %></td>
+        <td><%= f.text_field :timesheet_date,:placeholder => "Timesheet Date",:class => 'datepicker',:readonly => true %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Start_time %></td>
+        <td><%= f.text_field :start_time,:placeholder => "Start time",:class => 'timepicker',:readonly => true,:onblur => "calculate_total_hours()"  %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :End_time %></td>
+        <td><%= f.text_field :end_time,:placeholder => "End time",:class => 'timepicker',:readonly => true,:onblur => "calculate_total_hours()"  %></td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><%= f.label :Description %></td>
+        <td><%= f.text_area :description,:placeholder => "Enter details here", :rows => "5" ,:columns => "50" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :Total_hours %></td>
+        <td><%= f.text_field :total_hours,:placeholder => "Total working hours",:readonly => true  %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "Submit"%></td>
+      </tr>
+    </table>
+<% end %>
